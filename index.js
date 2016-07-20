@@ -10,7 +10,7 @@ events.on("interact-registry:loaded", function() {
 	FileSystem.mkdir( path.join(cwd, build) );
 
 	cli.plugins.install(path.join(cwd, src), [
-		'interact-registry-frontend-src'
+		'interact-registry-frontend-app'
 	], {
 		success: function() {
 
