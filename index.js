@@ -14,7 +14,7 @@ events.on("interact-registry:loaded", function() {
 	], {
 		success: function() {
 
-			cli.build(cwd, src, build, { 
+			cli.plugins.build(cwd, src, build, { 
 				dev : true,
 				success: function() {
 
