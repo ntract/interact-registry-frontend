@@ -2,6 +2,9 @@ events.on("interact-registry:loaded", function() {
 	
 	console.log("Frontend loading...");
 
+	var dev = false;
+	if (cli.config.commands.indexOf("dev") != -1) dev = true;
+
 	var cwd = path.join(__dirname, 'res');
 	var build = './build';
 	var src = './src';
@@ -15,10 +18,51 @@ events.on("interact-registry:loaded", function() {
 		success: function() {
 
 			cli.plugins.build({ 
-				dev : true,
+				dev : dev,
 				cwd: cwd,
 				src: src,
 				build: build,
+				remove: [
+					"_config.js.map",
+					"_config.js",
+					"_plugins.js.map",
+					"_plugins.js",
+					"_plugins.css",
+					"_core.js"
+				],
+				tasks: [
+					{
+						"task": "copy",
+						"description": "Copy"
+					},
+					{
+						"task": "collate",
+						"description": "Collate"
+					},
+					{
+						"task": "handlebars",
+						"description": "Handlebars"
+					},
+					{
+						"task": "less",
+						"description": "LESS"
+					},
+					{
+						"task": "requirejs",
+						"name": "javascript",
+						"description": "Main RequireJS",
+						"out": "_plugins.js",
+						"afterTasks": [ "collate" ]
+					},
+					{
+						"task": "requirejs",
+						"name": "config",
+						"description": "Config RequireJS",
+						"out": "_config.js",
+						"mainAttribute": "config",
+						"afterTasks": [ "collate" ]
+					}
+				],
 				success: function() {
 
 					app.use(express.static( path.join(cwd, build) ));
