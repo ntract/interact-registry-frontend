@@ -14,8 +14,11 @@ events.on("interact-registry:loaded", function() {
 	], {
 		success: function() {
 
-			cli.plugins.build(cwd, src, build, { 
+			cli.plugins.build({ 
 				dev : true,
+				cwd: cwd,
+				src: src,
+				build: build,
 				success: function() {
 
 					app.use(express.static( path.join(cwd, build) ));
