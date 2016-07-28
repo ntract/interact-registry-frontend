@@ -2,7 +2,12 @@
    "name": "interact-registry-frontend",
    "license": "GPL-3",
    "dependencies": {
-      "interact-registry": "~0.0"
+      "interact-registry": "~0.0",
+      "interact-cli-plugins-build-collate": "~0.0",
+      "interact-cli-plugins-build-copy": "~0.0",
+      "interact-cli-plugins-build-handlebars": "~0.0",
+      "interact-cli-plugins-build-less": "~0.0",
+      "interact-cli-plugins-build-requirejs": "~0.0"
    },
    "main": [
       "index.js"
