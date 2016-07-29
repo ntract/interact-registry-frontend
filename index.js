@@ -9,8 +9,8 @@ events.on("interact-registry:loaded", function() {
 	var build = './build';
 	var src = './src';
 
-	FileSystem.mkdir( path.join(cwd, src) );
-	FileSystem.mkdir( path.join(cwd, build) );
+	FileSystem.mkdir( path.join(cwd, src), {norel:true} );
+	FileSystem.mkdir( path.join(cwd, build), {norel:true} );
 
 	cli.plugins.install(path.join(cwd, src), [
 		'interact-registry-frontend-app#~0.0'
