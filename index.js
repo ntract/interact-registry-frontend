@@ -1,6 +1,6 @@
 require("./help");
 
-events.on("interact-registry:loaded", function() {
+events.on("ntract-registry:loaded", function() {
 	
 	console.log("Frontend loading...");
 
@@ -13,7 +13,7 @@ events.on("interact-registry:loaded", function() {
 	FileSystem.mkdir( path.join(cwd, build), {norel:true} );
 
 	cli.plugins.install(path.join(cwd, src), [
-		'interact-registry-frontend-app#~0.0'
+		'ntract-registry-frontend-app#~0.0'
 	], {
 		success: function() {
 
