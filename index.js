@@ -1,10 +1,10 @@
+require("./help");
+
 events.on("interact-registry:loaded", function() {
 	
 	console.log("Frontend loading...");
 
-	var dev = false;
-	if (cli.config.commands.indexOf("dev") != -1) dev = true;
-
+	var dev = switches(['dev', 'd']);
 	var cwd = path.join(__dirname, 'res');
 	var build = './build';
 	var src = './src';
